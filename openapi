@@ -1,0 +1,127 @@
+openapi: 3.0.2
+info:
+  title: AskRu
+  version: 1.0.0
+  description: AskRu API app
+paths:
+  /api/v1/poll/:
+    get:
+      operationId: listPolls
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    id:
+                      type: integer
+                      readOnly: true
+                    name:
+                      type: string
+                      maxLength: 256
+                    start:
+                      type: string
+                      format: date-time
+                      readOnly: true
+                    stop:
+                      type: string
+                      format: date-time
+                      nullable: true
+                    description:
+                      type: string
+                  required:
+                  - name
+                  - description
+          description: ''
+  /api/v1/answer/:
+    get:
+      operationId: listAnswers
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    id:
+                      type: integer
+                      readOnly: true
+                    answer_text:
+                      type: string
+                    question:
+                      type: integer
+                  required:
+                  - answer_text
+                  - question
+          description: ''
+    post:
+      operationId: createAnswer
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id001
+              properties:
+                answer_text:
+                  type: string
+                question:
+                  type: integer
+              required:
+              - answer_text
+              - question
+          application/x-www-form-urlencoded:
+            schema: *id001
+          multipart/form-data:
+            schema: *id001
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  answer_text:
+                    type: string
+                  question:
+                    type: integer
+                required:
+                - answer_text
+                - question
+          description: ''
+  /api/v1/question/:
+    get:
+      operationId: listQuestions
+      description: ''
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    id:
+                      type: integer
+                      readOnly: true
+                    type:
+                      type: string
+                      readOnly: true
+                    poll:
+                      type: string
+                      readOnly: true
+                    question_text:
+                      type: string
+                  required:
+                  - question_text
+          description: ''

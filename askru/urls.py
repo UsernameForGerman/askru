@@ -16,7 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from rest_framework.schemas import get_schema_view
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/', include('polls.urls'))
+    path('api/v1/', include('polls.urls')),
+    path('openapi-schema/', get_schema_view(
+        title="AskRu",
+        description="AskRu API app",
+        version="1.0.0",
+        public=True,
+    ), name='openapi-schema'),
 ]
