@@ -23,7 +23,7 @@ class Question(models.Model):
 
     poll = models.ForeignKey(Poll, on_delete=models.CASCADE)
     question_text = models.TextField()
-    type = models.IntegerField(choices=TYPES)
+    type = models.IntegerField(choices=TYPES, default=1)
 
     def __str__(self):
         return f"<Question(poll={self.poll.name}, question={self.question_text}, type={self.type})>"

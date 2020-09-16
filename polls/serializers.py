@@ -25,7 +25,3 @@ class AnswerSerializer(ModelSerializer):
     class Meta:
         model = Answer
         exclude = ('user_id', )
-    #
-    # def save(self, **kwargs):
-    #     print(kwargs)
-    #     return Answer.objects.create(user_id=kwargs['user_id'], **kwargs)
