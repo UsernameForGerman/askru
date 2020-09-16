@@ -1,0 +1,6 @@
+# Django
+# ----------------------------------------------------------------------------
+SECRET_KEY=sj%(%hht1k*6ljjse*5n8k2#gb@$8%36g^@38xkt!(+!mx-3l&
+DEBUG=False
+DJANGO_SETTINGS_MODULE=config.local
+ALLOWED_HOSTS="localhost" 

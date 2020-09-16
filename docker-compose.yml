@@ -1,0 +1,20 @@
+version: "3"
+
+volumes:
+  production_media: {}
+  production_static: {}
+
+services:
+  askru: &askru
+    build:
+      context: .
+      dockerfile: ./compose/django/Dockerfile
+    command: ["/start"]
+    image: askru_local
+    ports:
+      - "8000:9000"
+    env_file:
+      - ./.envs/.django
+    volumes:
+      - production_static:/var/askru/static
+      - production_media:/var/askru/media
