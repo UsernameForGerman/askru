@@ -5,8 +5,6 @@ TEXT_ANSWER = 'Answer with text'
 ONE_CHOICE = 'Answer with one choice'
 MULTIPLE_CHOICE = 'Answer with multiple choice'
 
-User = get_user_model()
-
 class Poll(models.Model):
     name = models.CharField(max_length=256)
     start = models.DateTimeField(auto_now_add=True)
@@ -14,7 +12,7 @@ class Poll(models.Model):
     description = models.TextField()
 
     def __str__(self):
-        return f"<Poll(name={self.name}, start={self.start}, stop={self.stop}, description={self.description})>"
+        return f"<Poll(name={self.name}, description={self.description})>"
 
 class Question(models.Model):
     TYPES = [
